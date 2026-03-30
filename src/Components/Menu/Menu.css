@@ -1,4 +1,4 @@
-.nav {
+nav {
     display: grid;
     grid-template-columns: 1fr;
     background-color: #eee;
@@ -6,6 +6,15 @@
     margin-bottom: 20px;
 }
 
-.nav:hover{
+.nav {
+    margin: 0 !important;
+}
+
+.nav a:hover{
     font-weight: bold;
+}
+
+.nav a{
+    color: #444;
+    text-decoration: none;
 }
