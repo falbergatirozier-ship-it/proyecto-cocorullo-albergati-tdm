@@ -1,0 +1,11 @@
+.nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.nav:hover{
+    font-weight: bold;
+}

@@ -7,6 +7,7 @@ import Series from "./Screens/Series/Series"
 import Favoritos from "./Screens/Favoritos/Favoritos"
 import Login from "./Screens/Login/Login"
 import Register from "./Screens/Register/Register"
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
         </Switch>
+
+        <Footer />
     </React.Fragment>
   );
 }
