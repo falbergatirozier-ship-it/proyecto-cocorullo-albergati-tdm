@@ -1,31 +1,34 @@
+import React, { Component } from "react"
+import {withRouter} from "react-router-dom"
 class Formulario extends Component {
   constructor(props) {
     super(props);
-    this.state = { valor: '' };
+    this.state = { search: '' };
   }
 
-  evitarSubmit(event) {
+  onSubmit(event) {
     event.preventDefault();
+    console.log("props de buscador", this.props)
+    this.props.history.push("/busqueda/" + this.state.search)
   }
 
-  controlarCambios(event) {
+  guardarBusqueda(event) {
     this.setState(
-      { valor: event.target.value },
-      () => console.log(this.state.valor)
-    );
+      { search: event.target.value },
+      () => console.log("log desde el setState extendido:", this.state.search))
+      console.log("el valor en estado es:" , this.state.search)
   }
 
   render() {
     return (
-      <form onSubmit={(event) => this.evitarSubmit(event)}>
-        <label>Name:</label>
-        <input
-          type="text"
-          onChange={(event) => this.controlarCambios(event)}
-          value={this.state.valor}
-        />
-        <input type="submit" value="Submit" />
+    <div>
+      <form onSubmit={(event) => this.onSubmit(event)}>
+            <label>Buscador...</label>
+            <input
+            onChange={(event) => this.guardarBusqueda(event)} value={this.state.search} type="submit"/>
+          <button type = "submit" >Buscar</button>
       </form>
+    </div>
     );
   }
 }
