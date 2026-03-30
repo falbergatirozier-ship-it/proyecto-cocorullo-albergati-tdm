@@ -5,10 +5,11 @@ import "./Header.css"
 function Header (){
     
     return (
-        <nav>
-            <h1 className="Titulo">UdeSA Movies</h1>
+        <React.Fragment>
+            <h1>UdeSA Movies</h1>
+
             <Menu />
-        </nav>
+        </React.Fragment>    
     )
 }
 
