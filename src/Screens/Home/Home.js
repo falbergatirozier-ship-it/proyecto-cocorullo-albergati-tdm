@@ -1,16 +1,18 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import Buscador from "../../Components/Buscador/Buscador";
 
 class Home extends Component {
-    constructor () {
-        super ();
+  constructor() {
+    super();
+  }
 
-    }
-    
-    render () {
-        return(
-            <div>Home</div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Buscador />
+      </div>
+    );
+  }
 }
 
-export default Home
+export default Home;
