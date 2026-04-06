@@ -1,31 +1,40 @@
-class Formulario extends Component {
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import "./Buscador.css";
+
+class Buscador extends Component {
   constructor(props) {
     super(props);
-    this.state = { valor: '' };
+    this.state = { search: "" };
   }
 
-  evitarSubmit(event) {
+  onSubmit(event) {
     event.preventDefault();
+    this.props.history.push("/resultados/" + this.state.search);
   }
 
-  controlarCambios(event) {
+  guardarBusqueda(event) {
     this.setState(
-      { valor: event.target.value },
-      () => console.log(this.state.valor)
+      { search: event.target.value },
+      () => console.log(this.state.search)
     );
   }
 
   render() {
-    return (
-      <form onSubmit={(event) => this.evitarSubmit(event)}>
-        <label>Name:</label>
+  return (
+    <div>
+      <form className="search-form" onSubmit={(event) => this.onSubmit(event)}>
         <input
           type="text"
-          onChange={(event) => this.controlarCambios(event)}
-          value={this.state.valor}
+          placeholder="Buscar..."
+          onChange={(event) => this.guardarBusqueda(event)}
+          value={this.state.search}
         />
-        <input type="submit" value="Submit" />
+        <button className="btn btn-success btn-sm" type="submit">Buscar</button>
       </form>
-    );
+    </div>
+  );
   }
 }
+
+export default withRouter(Buscador);
