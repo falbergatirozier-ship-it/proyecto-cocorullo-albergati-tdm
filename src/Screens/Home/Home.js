@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import SeccionPeliculas from "../../Components/SeccionPeliculas/SeccionPeliculas";
 
 class Home extends Component {
     constructor () {
@@ -8,7 +9,10 @@ class Home extends Component {
     
     render () {
         return(
-            <div>Home</div>
+            <React.Fragment>
+                <h2 class="alert alert-primary">Popular movies this week</h2>
+                <SeccionPeliculas />
+            </React.Fragment>
         )
     }
 }
