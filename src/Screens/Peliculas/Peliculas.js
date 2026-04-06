@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Peliculas from "../../Components/SeccionPeliculas1/SeccionPeliculas1";
 
 class Peliculas extends Component {
     constructor () {
@@ -8,7 +9,7 @@ class Peliculas extends Component {
     
     render () {
         return(
-            <div>Peliculas</div>
+            <Peliculas />
         )
     }
 }
