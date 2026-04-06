@@ -1,18 +1,31 @@
-.search-form {
+.search-form { 
   padding: .5rem 0;
   margin-bottom: 20px;
-  display: grid;
+  display: flex;
   grid-template-columns: 5fr 1fr;
   column-gap: 5px;
 }
 
 .search-form .btn-sm {
+    width: 8%;
   line-height: 1;
   font-size: 0.9rem;
 }
 
 .search-form input {
+    width: 60%; 
   border: 1px solid #02ff35;
+  border-radius: 4px;
+  padding-top: 3px;
+  vertical-align: middle;
+  line-height: 1;
+  font-size: 1rem;
+  padding-bottom: 4px;
+}
+
+.selector {
+  border: 1px solid #ed1b1b;
+   width: 9%;
   border-radius: 4px;
   padding-top: 3px;
   vertical-align: middle;

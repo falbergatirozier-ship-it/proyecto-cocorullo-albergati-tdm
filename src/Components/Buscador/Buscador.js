@@ -28,9 +28,12 @@ class Buscador extends Component {
           type="text"
           placeholder="Buscar..."
           onChange={(event) => this.guardarBusqueda(event)}
-          value={this.state.search}
-        />
+          value={this.state.search}/>
         <button className="btn btn-success btn-sm" type="submit">Buscar</button>
+        <select className="selector">
+          <option value="peliculas">Películas</option>
+         <option value="series">Series</option>
+        </select>
       </form>
     </div>
   );
