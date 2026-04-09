@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Card from "../CardPelicula/CardPelicula";
+import CardPelicula from "../CardPelicula/CardPelicula";
 
 class SeccionPeliculas extends Component {
     constructor () {
@@ -30,7 +31,7 @@ class SeccionPeliculas extends Component {
                 {
                     this.state.datos == "" ?
                     <h3>Cargando...</h3> :
-                    this.state.datos.map((pelicula) => <Card data={pelicula}/>)
+                    this.state.datos.map((pelicula) => <CardPelicula data={pelicula}/>)
                 }
             </section>
         )
