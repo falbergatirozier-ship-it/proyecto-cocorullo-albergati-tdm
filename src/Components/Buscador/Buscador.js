@@ -1,3 +1,7 @@
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import "./Buscador.css";
+
 class Buscador extends Component {
   constructor(props) {
     super(props);
