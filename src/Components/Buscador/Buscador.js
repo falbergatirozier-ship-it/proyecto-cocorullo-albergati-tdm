@@ -6,11 +6,12 @@ class Buscador extends Component {
   constructor(props) {
     super(props);
     this.state = { search: "" };
+    //this.state = {selector: ""}//
   }
-
+//otro estado y sumar al final de lo que busca el usuario en el buscador /pelicula o serie (el form ya lo sabe porque jusatemtne esta dentro de form)//
   onSubmit(event) {
     event.preventDefault();
-    this.props.history.push("/resultados/" + this.state.search);
+    this.props.history.push("/resultados/" + this.state.search); // aca agregar lo que dije arriba?)//
   }
 
   guardarBusqueda(event) {
@@ -27,10 +28,10 @@ class Buscador extends Component {
         <input
           type="text"
           placeholder="Buscar..."
-          onChange={(event) => this.guardarBusqueda(event)}
-          value={this.state.search}/>
+          onChange={(event) => this.guardarBusqueda(event)}// o agregar aca?//
+          value={this.state.search}/> 
         <button className="btn btn-success btn-sm" type="submit">Buscar</button>
-        <select className="selector">
+        <select  className="selector">
           <option value="peliculas">Películas</option>
          <option value="series">Series</option>
         </select>

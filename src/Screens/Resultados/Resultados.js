@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CardPelicula from "../../Components/CardPelicula/CardPelicula"; 
+import "./Resultados.css"
 
 class Resultados extends Component {
   constructor(props) {
@@ -28,17 +30,19 @@ class Resultados extends Component {
     return (
       <div>
         <h2>Resultados</h2>
+        <section className="cards">
 
         {this.state.resultados.length === 0 ? (
           <h3>Cargando...</h3>
         ) : (
           this.state.resultados.map((resultado, idx) => (
-            <p key={resultado.id + idx}>
-              {resultado.title || resultado.name}
-            </p>
+            <CardPelicula key={resultado.id + idx} data={resultado} />
           ))
         )}
+        </section>
       </div>
+      
+      
     );
   }
 }
