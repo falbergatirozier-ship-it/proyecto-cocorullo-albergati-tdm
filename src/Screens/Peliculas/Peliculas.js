@@ -39,7 +39,6 @@ class Peliculas extends Component {
     render () {
         return(
             <React.Fragment>
-                <button className="btn btn-info" onClick={() => this.masPeliculas()}>Cargar más</button>
                 <section className="row cards" id="movies">
                     {
                         this.state.datos.length === 0 ?
@@ -47,6 +46,7 @@ class Peliculas extends Component {
                         this.state.datos.map((pelicula) => <CardPelicula data={pelicula}/>)
                     }
                 </section>
+                <button className="btn btn-info" onClick={() => this.masPeliculas()}>Cargar más</button>
             </React.Fragment>
         )
     }
