@@ -1,43 +1,55 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import "./Buscador.css";
-
 class Buscador extends Component {
   constructor(props) {
     super(props);
-    this.state = { search: "" };
-    //this.state = {selector: ""}//
-  }
-//otro estado y sumar al final de lo que busca el usuario en el buscador /pelicula o serie (el form ya lo sabe porque jusatemtne esta dentro de form)//
-  onSubmit(event) {
-    event.preventDefault();
-    this.props.history.push("/resultados/" + this.state.search); // aca agregar lo que dije arriba?)//
+    this.state = {
+      search: "",
+      tipo: "movie"
+    };
   }
 
-  guardarBusqueda(event) {
-    this.setState(
-      { search: event.target.value },
-      () => console.log(this.state.search)
+  onSubmit(event) {
+    event.preventDefault();
+    this.props.history.push(
+      "/resultados/" + this.state.tipo + "/" + this.state.search
     );
   }
 
+  guardarBusqueda(event) {
+    this.setState({
+      search: event.target.value
+    });
+  }
+
+  guardarTipo(event) {
+    this.setState({
+      tipo: event.target.value
+    });
+  }
+
   render() {
-  return (
-    <div>
-      <form className="search-form" onSubmit={(event) => this.onSubmit(event)}>
-        <input
-          type="text"
-          placeholder="Buscar..."
-          onChange={(event) => this.guardarBusqueda(event)}// o agregar aca?//
-          value={this.state.search}/> 
-        <button className="btn btn-success btn-sm" type="submit">Buscar</button>
-        <select  className="selector">
-          <option value="peliculas">Películas</option>
-         <option value="series">Series</option>
-        </select>
-      </form>
-    </div>
-  );
+    return (
+      <div>
+        <form className="search-form" onSubmit={(event) => this.onSubmit(event)}>
+          <input
+            type="text"
+            placeholder="Buscar..."
+            onChange={(event) => this.guardarBusqueda(event)}
+            value={this.state.search}
+          />
+          <select
+            className="selector"
+            onChange={(event) => this.guardarTipo(event)}
+            value={this.state.tipo}
+          >
+            <option value="movie">Películas</option>
+            <option value="tv">Series</option>
+          </select>
+          <button className="btn btn-success btn-sm" type="submit">
+            Buscar
+          </button>
+        </form>
+      </div>
+    );
   }
 }
 
