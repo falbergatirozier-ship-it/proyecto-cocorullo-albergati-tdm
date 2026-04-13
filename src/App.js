@@ -23,7 +23,7 @@ function App() {
             <Route path="/favoritos" component={Favoritos} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/detalle" component={Detalle} />
+            <Route path="/detalle/:id" component={Detalle} />
             <Route path="/resultados/:busqueda" component={Resultados} />
           </Switch>
 
