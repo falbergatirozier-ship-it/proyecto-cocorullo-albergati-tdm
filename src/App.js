@@ -9,6 +9,7 @@ import Login from "./Screens/Login/Login"
 import Register from "./Screens/Register/Register"
 import Footer from "./Components/Footer/Footer";
 import Resultados from "./Screens/Resultados/Resultados";
+import Detalle from "./Screens/Detalle/Detalle"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/favoritos" component={Favoritos} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/detalle" component={Detalle} />
             <Route path="/resultados/:busqueda" component={Resultados} />
           </Switch>
 
