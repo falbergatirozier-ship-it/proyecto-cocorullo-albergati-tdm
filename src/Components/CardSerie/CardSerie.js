@@ -24,7 +24,7 @@ class CardSerie extends Component {
                     <h5 className="card-title">{this.props.data.original_name}</h5>
                     <p className={this.state.verMas ? "card-text show" : "card-text hide"}>{this.props.data.overview}</p>
                     <button className="mar btn btn-primary" onClick={() => this.verMas()}>{this.state.verMas ? "Ver Menos" : "Ver Más"}</button>
-                    <Link className="mar btn btn-primary" to="/Detalle" >Detalle</Link>
+                    <Link className="mar btn btn-primary" to={"/Detalle/tv/" + this.props.data.id}>Detalle</Link>
                 </div>
             </article>
         )

@@ -23,8 +23,8 @@ function App() {
             <Route path="/favoritos" component={Favoritos} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/detalle/:id" component={Detalle} />
-            <Route path="/resultados/:tipo/:busqueda" component={Resultados} />
+            <Route path="/detalle/:tipo/:id" component={Detalle} />
+            <Route path="/resultados/:busqueda" component={Resultados} />
           </Switch>
 
           <Footer />
