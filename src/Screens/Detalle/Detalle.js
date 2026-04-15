@@ -40,7 +40,7 @@ class Detalle extends Component {
                             <section className="row">
                                 <img src={"https://image.tmdb.org/t/p/w500/" + this.state.datos.poster_path} className="col-md-6" alt="..." />
                                 <section className="col-md-6 info">
-                                    <h3>DescripNameción</h3>
+                                    <h3>Descripción</h3>
                                     <p className="description">{this.state.datos.overview}</p>
                                     <p className="mt-0" id="votes"><strong>Género:</strong> {this.state.datos.genres.map(genero => genero.name + " ")}</p>
                                     <p className="mt-0 mb-0" id="release-date"><strong>Fecha de estreno:</strong> {this.state.datos.release_date}</p>
@@ -57,7 +57,7 @@ class Detalle extends Component {
                             <section className="row">
                                 <img src={"https://image.tmdb.org/t/p/w500/" + this.state.datos.poster_path} className="col-md-6" alt="..." />
                                 <section className="col-md-6 info">
-                                    <h3>DescripNameción</h3>
+                                    <h3>Descripción</h3>
                                     <p className="description">{this.state.datos.overview}</p>
                                     <p className="mt-0" id="votes"><strong>Género:</strong> {this.state.datos.genres.map(genero => genero.name + " ")}</p>
                                     <p className="mt-0 mb-0" id="release-date"><strong>Fecha de estreno:</strong> {this.state.datos.first_air_date}</p>
