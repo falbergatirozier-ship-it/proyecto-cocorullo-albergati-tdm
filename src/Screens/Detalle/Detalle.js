@@ -18,7 +18,7 @@ class Detalle extends Component {
         fetch ("https://api.themoviedb.org/3/" + tipo + "/" + id + "?api_key=" + apiKey)
             .then (res => res.json())
             .then (data => {
-                let storage = localStorage.getItem("favoritos")
+                let storage = localStorage.getItem("favoritos" + tipo )
                 let storageParseado = JSON.parse(storage)
 
                 if (storageParseado !== null) {
@@ -36,21 +36,22 @@ class Detalle extends Component {
                 }
             })
         .catch (e => console.log(e))   
-        console.log(this.state.datos)
+        console.log(this.props)
     }
 
     agregarFav (id) {
-        let storage = localStorage.getItem("favoritos")
+        let tipo = this.props.match.params.tipo
+        let storage = localStorage.getItem("favoritos" + tipo)
         let storageParseado = JSON.parse(storage)
 
         if (storageParseado === null) {
             let primerFav = [id]
             let storageString = JSON.stringify(primerFav)
-            localStorage.setItem("favoritos",storageString)
+            localStorage.setItem("favoritos" + tipo,storageString)
         } else {
             storageParseado.push(id)
             let storageString = JSON.stringify(storageParseado)
-            localStorage.setItem("favoritos",storageString)
+            localStorage.setItem("favoritos" + tipo,storageString)
         }
 
         this.setState({
@@ -59,12 +60,13 @@ class Detalle extends Component {
     }
 
     sacarFav (id){
-        let storage = localStorage.getItem("favoritos")
+        let tipo = this.props.match.params.tipo
+        let storage = localStorage.getItem("favoritos" + tipo)
         let storageParseado = JSON.parse(storage)
 
         let storageFiltrado = storageParseado.filter(idx => idx !== id)
         let storageString = JSON.stringify(storageFiltrado)
-        localStorage.setItem("favoritos",storageString)
+        localStorage.setItem("favoritos" + tipo,storageString)
 
         this.setState({
             esFav: false
