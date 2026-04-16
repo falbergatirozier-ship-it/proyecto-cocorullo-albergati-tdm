@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import FormularioRegister from "../../Components/FormularioRegister/FormularioRegister";
 
 class Register extends Component {
     constructor () {
@@ -8,9 +9,15 @@ class Register extends Component {
     
     render () {
         return(
-            <div>Register</div>
+            <React.Fragment>
+            <h2 className="alert alert-primary">Registro</h2>
+            <FormularioRegister></FormularioRegister>
+            </React.Fragment>
+
+
+            
         )
     }
 }
 
-export default Register
+export default Register 
