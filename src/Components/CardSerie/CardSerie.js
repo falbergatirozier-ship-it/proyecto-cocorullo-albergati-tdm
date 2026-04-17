@@ -37,9 +37,11 @@ class CardSerie extends Component {
             let storageString = JSON.stringify(primerFav)
             localStorage.setItem("favoritos" + tipo,storageString)
         } else {
-            storageParseado.push(id)
-            let storageString = JSON.stringify(storageParseado)
-            localStorage.setItem("favoritos" + tipo,storageString)
+            if (storageParseado.includes(id) === false) {
+                storageParseado.push(id)
+                let storageString = JSON.stringify(storageParseado)
+                localStorage.setItem("favoritos" + tipo,storageString)
+            }
         }
 
         this.setState({

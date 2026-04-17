@@ -51,9 +51,11 @@ class Detalle extends Component {
             let storageString = JSON.stringify(primerFav)
             localStorage.setItem("favoritos" + tipo,storageString)
         } else {
-            storageParseado.push(id)
-            let storageString = JSON.stringify(storageParseado)
-            localStorage.setItem("favoritos" + tipo,storageString)
+            if (storageParseado.includes(id) === false) {
+                storageParseado.push(id)
+                let storageString = JSON.stringify(storageParseado)
+                localStorage.setItem("favoritos" + tipo,storageString)
+            }
         }
 
         this.setState({
@@ -66,7 +68,7 @@ class Detalle extends Component {
         let storage = localStorage.getItem("favoritos" + tipo)
         let storageParseado = JSON.parse(storage)
 
-        let storageFiltrado = storageParseado.filter(idx => idx !== id)
+        let storageFiltrado = storageParseado.filter(idx => idx != id)
         let storageString = JSON.stringify(storageFiltrado)
         localStorage.setItem("favoritos" + tipo,storageString)
 
@@ -97,9 +99,9 @@ class Detalle extends Component {
                                     {
                                         cookies.get("user") ? (
                                             this.state.esFav == false ? (
-                                            <button onClick={() => this.agregarFav(this.props.data.id)}>🩶</button>
+                                            <button onClick={() => this.agregarFav(this.props.match.params.id)}>🩶</button>
                                         ) : (
-                                            <button onClick={() => this.sacarFav(this.props.data.id)}>♥️</button>
+                                            <button onClick={() => this.sacarFav(this.props.match.params.id)}>♥️</button>
                                         )
                                     ) : null
                                     }

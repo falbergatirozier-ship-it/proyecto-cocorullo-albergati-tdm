@@ -10,6 +10,7 @@ import Register from "./Screens/Register/Register"
 import Footer from "./Components/Footer/Footer";
 import Resultados from "./Screens/Resultados/Resultados";
 import Detalle from "./Screens/Detalle/Detalle"
+import NotFound from "./Screens/NotFound/NotFound"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/detalle/:tipo/:id" component={Detalle} />
             <Route path="/resultados/:tipo/:busqueda" component={Resultados} />
+            <Route component={NotFound} />
 
           </Switch>
 
