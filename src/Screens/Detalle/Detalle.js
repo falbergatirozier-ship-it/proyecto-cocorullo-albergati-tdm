@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 class Detalle extends Component {
     constructor (props) {
@@ -93,10 +95,13 @@ class Detalle extends Component {
                                     <p className="mt-0 mb-0 length"><strong>Duración:</strong> {this.state.datos.runtime}</p>
                                     <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.datos.vote_average}</p>
                                     {
-                                        this.state.esFav == false ?
-                                        <button onClick={() => this.agregarFav(this.state.datos.id)}>🩶</button>
-                                        :
-                                        <button onClick={() => this.sacarFav(this.state.datos.id)}>♥️</button>
+                                        cookies.get("user") ? (
+                                            this.state.esFav == false ? (
+                                            <button onClick={() => this.agregarFav(this.props.data.id)}>🩶</button>
+                                        ) : (
+                                            <button onClick={() => this.sacarFav(this.props.data.id)}>♥️</button>
+                                        )
+                                    ) : null
                                     }
                                 </section>
                             </section>

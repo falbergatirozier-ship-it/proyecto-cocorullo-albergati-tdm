@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import "./CardSerie.css"
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 class CardSerie extends Component {
     constructor (props) {
@@ -74,10 +76,13 @@ class CardSerie extends Component {
                     <button className="mar btn btn-primary" onClick={() => this.verMas()}>{this.state.verMas ? "Ver Menos" : "Ver Más"}</button>
                     <Link className="mar btn btn-primary" to={"/Detalle/tv/" + this.props.data.id}>Detalle</Link>
                     {
-                        this.state.esFav == false ?
-                        <button onClick={() => this.agregarFav(this.props.data.id)}>🩶</button>
-                        :
-                        <button onClick={() => this.sacarFav(this.props.data.id)}>♥️</button>
+                        cookies.get("user") ? (
+                            this.state.esFav == false ? (
+                            <button onClick={() => this.agregarFav(this.props.data.id)}>🩶</button>
+                        ) : (
+                            <button onClick={() => this.sacarFav(this.props.data.id)}>♥️</button>
+                        )
+                    ) : null
                     }
                 </div>
             </article>

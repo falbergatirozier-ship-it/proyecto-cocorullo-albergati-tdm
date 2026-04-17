@@ -9,14 +9,13 @@ class Favoritos extends Component {
             favoritosPelicula: null,
             favoritosSeries: null
         }
-
     }
     
     componentDidMount () {
         let storage1 = localStorage.getItem("favoritosmovie")
         let storageParseado1 = JSON.parse(storage1)
 
-        if (storageParseado1.length === 0 || storageParseado1 === null) {
+        if (storageParseado1 === null || storageParseado1.length === 0) {
             let peliculasRecuperadas = []
             this.setState({
                 favoritosPelicula: peliculasRecuperadas
@@ -41,7 +40,7 @@ class Favoritos extends Component {
         let storage = localStorage.getItem("favoritostv")
         let storageParseado = JSON.parse(storage)
 
-        if (storageParseado.length === 0 || storageParseado === null) {
+        if (storageParseado === null || storageParseado.length === 0) {
             let seriesRecuperadas = []
             this.setState({
                 favoritosSeries: seriesRecuperadas
@@ -63,7 +62,7 @@ class Favoritos extends Component {
                 })
         }        
     }
-
+// PREGUNTAR PORQUE NO CARGA DE UNA EL FAVORITOS Y HAY QUE RECARGAR
     render () {
         return(
             <React.Fragment>
@@ -79,8 +78,8 @@ class Favoritos extends Component {
                     }
                 </section>
 
-                <h2 class="alert alert-warning">Series favoritas</h2>
-                <section class="row cards" id="tv-show">
+                <h2 className="alert alert-warning">Series favoritas</h2>
+                <section className="row cards" id="tv-show">
                     {
                         this.state.favoritosSeries === null? (
                             <h3>Cargando...</h3>
