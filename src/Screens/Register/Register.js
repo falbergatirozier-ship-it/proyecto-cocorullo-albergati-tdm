@@ -10,12 +10,9 @@ class Register extends Component {
     render () {
         return(
             <React.Fragment>
-            <h2 className="alert alert-primary">Registro</h2>
-            <FormularioRegister></FormularioRegister>
+                <h2 className="alert alert-primary">Registro</h2>
+                <FormularioRegister/>
             </React.Fragment>
-
-
-            
         )
     }
 }

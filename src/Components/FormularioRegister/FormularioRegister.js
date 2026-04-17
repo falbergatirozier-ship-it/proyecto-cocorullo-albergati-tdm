@@ -38,12 +38,12 @@ class FormularioRegister extends Component{
 
         let filtroU = usuarios.filter(function(data) {
             return data.email === mail;
-        }); //consultar con nelson mañana//
+        });
 
         let usuarioRepetido = filtroU.length > 0;
 
         if (usuarioRepetido) {
-            this.setState({ error: "Email no disponible"});    //esto del formato if tmb//
+            this.setState({ error: "Email no disponible"});
             return
         }
 
