@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import CardSerie from "../../Components/CardSerie/CardSerie";
+import Filtro from "../../Components/Filtro/Filtro";
 
 class Series extends Component {
     constructor () {
         super ();
         this.state = {
             datos: [],
-            page: 1
+            page: 1,
+            filtroV: ""
         }
     }
 
@@ -35,15 +37,39 @@ class Series extends Component {
             ))
         .catch(e => console.log(e))
     }
+
+    controlarFiltro(event) {
+        this.setState({
+            filtroV: event.target.value
+        });
+    }
     
     render () {
+        let textoF = this.state.filtroV;
+        let seriesF;
+
+        if (textoF === "") {
+            seriesF = this.state.datos;
+        } else
+            seriesF = this.state.datos.filter(function(serie){
+                return serie.original_name === textoF;
+            });
+        
+
+        
         return(
             <React.Fragment>
+
+                <Filtro valor={this.state.filtroV} 
+                controlarFiltro={(event) => this.controlarFiltro(event)}/>
+
+                <h2 class="alert alert-primary">Series</h2>
+
                 <section className="row cards" id="tv-show">
                     {
                         this.state.datos.length === 0 ?
                         <h3>Cargando...</h3> :
-                        this.state.datos.map((serie) => <CardSerie data={serie}/>)
+                        seriesF.map((serie) => <CardSerie data={serie} />)
                     }
                 </section>
                 <button className="btn btn-info" onClick={() => this.masPeliculas()}>Cargar más</button>

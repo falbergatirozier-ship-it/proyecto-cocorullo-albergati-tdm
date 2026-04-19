@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import CardPelicula from "../../Components/CardPelicula/CardPelicula";
+import Filtro from "../../Components/Filtro/Filtro";
 
 class Peliculas extends Component {
     constructor () {
         super ();
         this.state = {
             datos: [],
-            page: 1
+            page: 1,
+            filtroV: ""
         }
     }
 
@@ -36,14 +38,36 @@ class Peliculas extends Component {
         .catch(e => console.log(e))
     }
 
+    controlarFiltro(event) {
+        this.setState({
+            filtroV: event.target.value
+        });
+    }
+
     render () {
-        return(
+        let textoF = this.state.filtroV;
+        let peliculasF;
+
+        if (textoF === "") {
+            peliculasF = this.state.datos;
+        } else
+            peliculasF = this.state.datos.filter(function(pelicula){
+                return pelicula.title === textoF;
+            });
+    
+        return (
             <React.Fragment>
+
+                <Filtro valor={this.state.filtroV} 
+                controlarFiltro={(event) => this.controlarFiltro(event)}/>
+
+                <h2 class="alert alert-primary">Peliculas</h2>
+
                 <section className="row cards" id="movies">
                     {
                         this.state.datos.length === 0 ?
                         <h3>Cargando...</h3> :
-                        this.state.datos.map((pelicula) => <CardPelicula data={pelicula}/>)
+                        peliculasF.map((pelicula) => <CardPelicula data={pelicula} />)
                     }
                 </section>
                 <button className="btn btn-info" onClick={() => this.masPeliculas()}>Cargar más</button>

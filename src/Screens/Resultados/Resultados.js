@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CardPelicula from "../../Components/CardPelicula/CardPelicula"; 
 import CardSerie from "../../Components/CardSerie/CardSerie";
+import Buscador from "../../Components/Buscador/Buscador";
 import "./Resultados.css"
 
 class Resultados extends Component {
@@ -32,6 +33,10 @@ class Resultados extends Component {
     console.log(this.state.resultados);
     
     return (
+      <React.Fragment>
+        <div>
+          <Buscador/>
+        </div>
       <div>
         <h2>Resultados</h2>
         <section className="cards">
@@ -49,6 +54,7 @@ class Resultados extends Component {
         )}
         </section>
       </div>
+      </React.Fragment>
       
       
     );
