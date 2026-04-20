@@ -66,8 +66,12 @@ class Peliculas extends Component {
                 <section className="row cards" id="movies">
                     {
                         this.state.datos.length === 0 ?
-                        <h3>Cargando...</h3> :
-                        peliculasF.map((pelicula) => <CardPelicula data={pelicula} />)
+                        (<h3>Cargando...</h3>) 
+                        : 
+                        peliculasF.length === 0 ? 
+                        (<h3>No se encontraron resultados para ese filtro.</h3>)
+                        :
+                        (peliculasF.map((pelicula) => <CardPelicula data={pelicula} />))
                     }
                 </section>
                 <button className="btn btn-info" onClick={() => this.masPeliculas()}>Cargar más</button>

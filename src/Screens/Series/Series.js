@@ -68,8 +68,12 @@ class Series extends Component {
                 <section className="row cards" id="tv-show">
                     {
                         this.state.datos.length === 0 ?
-                        <h3>Cargando...</h3> :
-                        seriesF.map((serie) => <CardSerie data={serie} />)
+                        (<h3>Cargando...</h3>) 
+                        : 
+                        seriesF.length === 0 ? 
+                        (<h3>No se encontraron resultados para ese filtro.</h3>)
+                        :
+                        (seriesF.map((pelicula) => <CardPelicula data={pelicula} />))
                     }
                 </section>
                 <button className="btn btn-info" onClick={() => this.masPeliculas()}>Cargar más</button>
