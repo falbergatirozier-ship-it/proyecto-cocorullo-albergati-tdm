@@ -11,7 +11,7 @@ class Filtro extends Component {
       <form className="filter-form px-0 mb-3" onSubmit={(event) => this.evitarSubmit(event)}>
         <input
           type="text"
-          placeholder="Buscar dentro de la lista"
+          placeholder="Buscar..."
           value={this.props.valor}
           onChange={(event) => this.props.controlarFiltro(event)}
         />
