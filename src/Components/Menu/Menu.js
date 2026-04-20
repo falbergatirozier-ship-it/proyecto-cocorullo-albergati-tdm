@@ -16,8 +16,14 @@ function Menu (){
                         <li className="nav-item"> <Link className="nav-link" to="/Favoritos" >Favoritos</Link> </li>
                     ) : null
                 }
-                <li className="nav-item ml-auto"> <Link className="nav-link" to="/Register" >Register</Link> </li>
-                <li className="nav-item"> <Link className="nav-link" to="/Login" >Login</Link> </li>
+                {
+                    cookies.get("user") === undefined ? (
+                        <React.Fragment>
+                            <li className="nav-item ml-auto"> <Link className="nav-link" to="/Register" >Register</Link> </li>
+                            <li className="nav-item"> <Link className="nav-link" to="/Login" >Login</Link> </li>
+                        </React.Fragment>
+                    ) : null
+                }
             </ul>
     </nav>
     )
