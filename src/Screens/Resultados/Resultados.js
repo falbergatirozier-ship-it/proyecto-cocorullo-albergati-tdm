@@ -12,7 +12,7 @@ class Resultados extends Component {
     };
   }
 
-  componentDidMount() {
+  resultadoss() {
     let busqueda = this.props.match.params.busqueda;
     let tipo = this.props.match.params.tipo;
 
@@ -26,6 +26,21 @@ class Resultados extends Component {
         })
       )
       .catch((error) => console.log(error));
+  }
+
+  componentDidMount() {
+    this.resultadoss();
+  }
+
+  componentDidUpdate(props) {
+    if (props.match.params.busqueda !== this.props.match.params.busqueda) {
+      this.resultadoss();
+    }
+    else {
+    if (props.match.params.tipo !== this.props.match.params.tipo) {
+      this.resultadoss();
+      }
+    }
   }
 
   render() {
