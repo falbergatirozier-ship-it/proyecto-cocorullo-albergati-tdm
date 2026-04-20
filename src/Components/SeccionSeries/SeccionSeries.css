@@ -1,0 +1,17 @@
+.boton-ver-todas {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: rgb(25, 135, 84);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.boton-ver-todas:hover {
+    background-color: rgb(21, 115, 71);
+    color: white;
+}

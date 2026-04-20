@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import Card from "../CardPelicula/CardPelicula";
 import CardPelicula from "../CardPelicula/CardPelicula";
+import {Link} from "react-router-dom"
+import "./SeccionPeliculas.css"
 
 class SeccionPeliculas extends Component {
     constructor () {
@@ -27,13 +28,16 @@ class SeccionPeliculas extends Component {
         console.log(this.state.datos);
         
         return(
-            <section class="row cards" id="movies">
-                {
-                    this.state.datos == "" ?
-                    <h3>Cargando...</h3> :
-                    this.state.datos.map((pelicula) => <CardPelicula data={pelicula}/>)
-                }
-            </section>
+            <React.Fragment>
+                <section class="row cards" id="movies">
+                    {
+                        this.state.datos == "" ?
+                        <h3>Cargando...</h3> :
+                        this.state.datos.map((pelicula) => <CardPelicula data={pelicula}/>)
+                    }
+                </section>
+                <Link className="boton-ver-todas" to="/Peliculas" >Ver todas las películas</Link>
+            </React.Fragment>
         )
     }
 }

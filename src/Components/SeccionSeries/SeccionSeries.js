@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import CardSerie from "../CardSerie/CardSerie";
+import {Link} from "react-router-dom"
+import "./SeccionSeries.css"
 
 class SeccionSerie extends Component {
     constructor () {
@@ -26,13 +28,16 @@ class SeccionSerie extends Component {
         console.log(this.state.datos);
         
         return(
-            <section class="row cards" id="tv-show">
-                {
-                    this.state.datos == "" ?
-                    <h3>Cargando...</h3> :
-                    this.state.datos.map((pelicula) => <CardSerie data={pelicula}/>)
-                }
-            </section>
+            <React.Fragment>
+                <section class="row cards" id="tv-show">
+                    {
+                        this.state.datos == "" ?
+                        <h3>Cargando...</h3> :
+                        this.state.datos.map((pelicula) => <CardSerie data={pelicula}/>)
+                    }
+                </section>
+                <Link className="boton-ver-todas" to="/Series" >Ver todas las series</Link>
+            </React.Fragment>
         )
     }
 }
