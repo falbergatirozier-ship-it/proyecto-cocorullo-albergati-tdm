@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import "./FormularioLogin.css";
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
