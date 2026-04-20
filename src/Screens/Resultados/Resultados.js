@@ -8,7 +8,9 @@ class Resultados extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      resultados: []
+      resultados: [],
+      cargando: true
+
     };
   }
 
@@ -22,7 +24,8 @@ class Resultados extends Component {
       .then((response) => response.json())
       .then((data) =>
         this.setState({
-          resultados: data.results
+          resultados: data.results,
+          cargando: false
         })
       )
       .catch((error) => console.log(error));
@@ -56,10 +59,11 @@ class Resultados extends Component {
         <h2>Resultados</h2>
         <section className="cards">
 
-        {this.state.resultados.length === 0 ? (
-          <h3>Cargando...</h3>
-        ) : (
-          this.state.resultados.map((resultado, idx) => (
+        {this.state.cargando  ? (
+          <h3>Cargando...</h3> ) : this.state.resultados.length === 0 ?
+          (<h3>No se encontraron resultados.</h3>)
+          : 
+          (this.state.resultados.map((resultado, idx) => (
             
             tipo === "movie" ?
             <CardPelicula key={resultado.id + idx} data={resultado} /> : 
@@ -67,6 +71,7 @@ class Resultados extends Component {
             <CardSerie key={resultado.id + idx} data={resultado} />
           ))
         )}
+        
         </section>
       </div>
       </React.Fragment>
