@@ -8,7 +8,8 @@ class Series extends Component {
         this.state = {
             datos: [],
             page: 1,
-            filtroV: ""
+            filtroV: "",
+            seriesBkp: []
         }
     }
 
@@ -19,6 +20,7 @@ class Series extends Component {
             .then (data => {this.setState(
                 {
                     datos: data.results,
+                    seriesBkp: data.results,
                     page:this.state.page + 1
                 }
             )})
@@ -32,7 +34,8 @@ class Series extends Component {
             .then(data => this.setState(
                 {
                     page: this.state.page + 1,
-                    datos: this.state.datos.concat(data.results)
+                    datos: this.state.datos.concat(data.results),
+                    seriesBkp: this.state.datos.concat(data.results),
                 }
             ))
         .catch(e => console.log(e))
@@ -41,22 +44,17 @@ class Series extends Component {
     controlarFiltro(event) {
         this.setState({
             filtroV: event.target.value
+        },() => {
+            const seriesfiltradas = this.state.seriesBkp.filter((objeto)=> objeto.original_name.toLowerCase().includes(this.state.filtroV.toLocaleLowerCase())
+            )
+            this.setState({
+                datos: seriesfiltradas
+            }
+            )
         });
     }
     
     render () {
-        let textoF = this.state.filtroV;
-        let seriesF;
-
-        if (textoF === "") {
-            seriesF = this.state.datos;
-        } else
-            seriesF = this.state.datos.filter(function(serie){
-                return serie.original_name === textoF;
-            });
-        
-
-        
         return(
             <React.Fragment>
 
@@ -69,11 +67,8 @@ class Series extends Component {
                     {
                         this.state.datos.length === 0 ?
                         (<h3>Cargando...</h3>) 
-                        : 
-                        seriesF.length === 0 ? 
-                        (<h3>No se encontraron resultados para ese filtro.</h3>)
                         :
-                        (seriesF.map((pelicula) => <CardSerie data={pelicula} />))
+                        (this.state.datos.map((serie) => <CardSerie data={serie} />))
                     }
                 </section>
                 <button className="btn btn-info" onClick={() => this.masPeliculas()}>Cargar más</button>

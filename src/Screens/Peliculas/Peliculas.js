@@ -8,7 +8,8 @@ class Peliculas extends Component {
         this.state = {
             datos: [],
             page: 1,
-            filtroV: ""
+            filtroV: "",
+            peliculasBkp: []
         }
     }
 
@@ -19,6 +20,7 @@ class Peliculas extends Component {
             .then (data => {this.setState(
                 {
                     datos: data.results,
+                    peliculasBkp: data.results,
                     page:this.state.page + 1
                 }
             )})
@@ -32,7 +34,8 @@ class Peliculas extends Component {
             .then(data => this.setState(
                 {
                     page: this.state.page + 1,
-                    datos: this.state.datos.concat(data.results)
+                    datos: this.state.datos.concat(data.results),
+                    peliculasBkp: this.state.datos.concat(data.results),
                 }
             ))
         .catch(e => console.log(e))
@@ -41,20 +44,17 @@ class Peliculas extends Component {
     controlarFiltro(event) {
         this.setState({
             filtroV: event.target.value
+        },() => {
+            const peliculafiltradas = this.state.peliculasBkp.filter((objeto)=> objeto.title.toLowerCase().includes(this.state.filtroV.toLocaleLowerCase())
+            )
+            this.setState({
+                datos: peliculafiltradas
+            }
+            )
         });
     }
 
     render () {
-        let textoF = this.state.filtroV;
-        let peliculasF;
-
-        if (textoF === "") {
-            peliculasF = this.state.datos;
-        } else
-            peliculasF = this.state.datos.filter(function(pelicula){
-                return pelicula.title === textoF;
-            });
-    
         return (
             <React.Fragment>
 
@@ -68,10 +68,7 @@ class Peliculas extends Component {
                         this.state.datos.length === 0 ?
                         (<h3>Cargando...</h3>) 
                         : 
-                        peliculasF.length === 0 ? 
-                        (<h3>No se encontraron resultados para ese filtro.</h3>)
-                        :
-                        (peliculasF.map((pelicula) => <CardPelicula data={pelicula} />))
+                        this.state.datos.map((pelicula) => <CardPelicula data={pelicula} />)
                     }
                 </section>
                 <button className="btn btn-info" onClick={() => this.masPeliculas()}>Cargar más</button>
