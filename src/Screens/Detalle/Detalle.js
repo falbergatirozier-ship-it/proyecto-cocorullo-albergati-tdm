@@ -99,9 +99,9 @@ class Detalle extends Component {
                                     {
                                         cookies.get("user") ? (
                                             this.state.esFav == false ? (
-                                            <button onClick={() => this.agregarFav(this.props.match.params.id)}>🩶</button>
+                                            <button onClick={() => this.agregarFav(Number(this.props.match.params.id))}>🩶</button>
                                         ) : (
-                                            <button onClick={() => this.sacarFav(this.props.match.params.id)}>♥️</button>
+                                            <button onClick={() => this.sacarFav(Number(this.props.match.params.id))}>♥️</button>
                                         )
                                     ) : null
                                     }
@@ -123,10 +123,13 @@ class Detalle extends Component {
                                     <p className="mt-0 mb-0 length"><strong>Número de temporadas:</strong> {this.state.datos.number_of_seasons}</p>
                                     <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.datos.vote_average}</p>
                                     {
-                                        this.state.esFav == false ?
-                                        <button onClick={() => this.agregarFav(this.state.datos.id)}>🩶</button>
-                                        :
-                                        <button onClick={() => this.sacarFav(this.state.datos.id)}>♥️</button>
+                                        cookies.get("user") ? (
+                                            this.state.esFav == false ? (
+                                            <button onClick={() => this.agregarFav(Number(this.props.match.params.id))}>🩶</button>
+                                        ) : (
+                                            <button onClick={() => this.sacarFav(Number(this.props.match.params.id))}>♥️</button>
+                                        )
+                                    ) : null
                                     }
                                 </section>
                             </section>
